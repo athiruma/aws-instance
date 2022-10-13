@@ -1,0 +1,10 @@
+---
+- name: Create VPC
+  amazon.aws.ec2_vpc_net_info:
+   register: vpc_info
+
+- name: List vpc_list
+  debug:
+    msg: "{{ vpc_info }}"
+
+

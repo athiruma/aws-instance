@@ -18,3 +18,17 @@ install ansible aws requirements
 ansible-gallary collection install -r requirements.yml
 ```
 
+#### Configure AWS credentials
+- as a best practice always use aws credentials as env
+
+```sh
+
+export AWS_ACCESS_KEY_ID='access_key_id'
+
+export AWS_SECRET_ACCESS_KEY='secret_access_key'
+
+export AWS_DEFAULT_REGION='region_name' ( default: ap-south-1 )
+
+
+```
+
