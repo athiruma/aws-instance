@@ -1,0 +1,8 @@
+---
+- name: Create aws instance with dedicated vpc
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/all.yml
+  roles:
+    - vpc_net
