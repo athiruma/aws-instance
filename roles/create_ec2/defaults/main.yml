@@ -1,0 +1,7 @@
+--- 
+
+region: ap-south-1 
+aws_key_name: example-key
+image_id: ami-01216e7612243e0ef
+instance_name: Test-Instance-Name
+instance_type: t2.micro 

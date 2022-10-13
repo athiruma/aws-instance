@@ -1,0 +1,23 @@
+--- 
+- name: Create AWS Key-Pair
+  amazon.aws.ec2_key:
+   region: "{{ region }}"
+   name: "{{ aws_key_name }}"
+   key_material: "{{ key_material }}"
+- name: Create ec2 instance
+  amazon.aws.ec2_instance:
+   region: "{{ region }}"
+   image_id: "{{ image_id }}"
+   name: "{{ instance_name }}"
+   instance_type: "{{ instance_type }}"
+   vpc_subnet_id: "{{ hostvars['localhost']['subnet_id'] }}"
+   key_name: "{{ aws_key_name }}"
+   network:
+    assign_public_ip: true
+    delete_on_termination: true
+    subnet_id: "{{ hostvars['localhost']['subnet_id'] }}"
+   wait: true
+
+
+
+   

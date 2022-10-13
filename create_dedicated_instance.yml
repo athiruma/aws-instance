@@ -6,3 +6,4 @@
     - vars/all.yml
   roles:
     - vpc_net
+    - create_ec2

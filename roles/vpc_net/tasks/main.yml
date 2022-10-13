@@ -1,17 +1,17 @@
 ---
 
 - name: Create VPC in {{region}}
-  amazon.aws.ec2_vpc_net: 
+  amazon.aws.ec2_vpc_net:
    region: "{{region }}"
    name: "{{ vpc_name }}"
    cidr_block: "{{ cidr_block }}"
-   tenancy: dedicated
-  register: vpc 
+   tenancy: default
+  register: vpc
 
 - name: Create Subnet
   amazon.aws.ec2_vpc_subnet:
    region: "{{ region }}"
-   vpc_id: "{{ vpc.id }}"
+   vpc_id: "{{ vpc.vpc.id }}"
    cidr: "{{ cidr_subnet1 }}"
    az: "{{ zone }}"
   register: subnet
@@ -19,15 +19,19 @@
 - name: create internet gateway
   amazon.aws.ec2_vpc_igw:
    region: "{{ region }}"
-   vpc_id: "{{ vpc.id }}"
+   vpc_id: "{{ vpc.vpc.id }}"
   register: igw
 
 - name: Set up public subnet route table
   amazon.aws.ec2_vpc_route_table:
    region: "{{region}}"
-   vpc_id: "{{ vpc.id }}"
+   vpc_id: "{{ vpc.vpc.id }}"
    subnets:
-    - "{{ subnet.subnet_id  }}"
+    - "{{ subnet.subnet.id  }}"
    routes:
     - dest: 0.0.0.0/0
       gateway_id: "{{ igw.gateway_id }}"
+- name: Export variables
+  set_fact:
+   vpc_id: "{{ vpc.vpc.id }}"
+   subnet_id: "{{ subnet.subnet.id }}"
