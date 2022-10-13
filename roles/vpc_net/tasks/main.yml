@@ -1,14 +1,10 @@
 ---
 - name: Create VPC
   amazon.aws.ec2_vpc_net_info:
-<<<<<<< HEAD
-=======
    region: "{{ region }}"
->>>>>>> d8d1fea4ff3de435096b2a6d6a4c66ef2c55deae
-   register: vpc_info
+  register: vpc_list
 
-- name: List vpc_list
+- name: list vpc's
   debug:
-    msg: "{{ vpc_info }}"
-
+   msg: "{{ vpc_list.vpcs[0].vpc_id }}" 
 
