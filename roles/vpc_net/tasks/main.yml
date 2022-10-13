@@ -5,14 +5,14 @@
    region: "{{region }}"
    name: "{{ vpc_name }}"
    cidr_block: "{{ cidr_block }}"
-   tenanancy: dedicated
+   tenancy: dedicated
   register: vpc 
 
 - name: Create Subnet
   amazon.aws.ec2_vpc_subnet:
    region: "{{ region }}"
    vpc_id: "{{ vpc.vpc_id }}"
-   cisr: "{{ subnet-A }}"
+   cidr: "{{ cidr_subnet1 }}"
    az: "{{ zone }}"
   register: subnet
 

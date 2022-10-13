@@ -1,3 +1,5 @@
 ---
 # input the aws region u want to create vpc
 region: ap-south-1 
+cidr_subnet1: 10.0.1.0/24
+zone: ap-south-1a
