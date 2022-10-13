@@ -2,7 +2,7 @@
 ### Create EC2 instance with your own network Ip's
 ### Destroy EC2 instance you create
 
-###Pre-requisites
+### Pre-requisites
 
 - install ansible
 
