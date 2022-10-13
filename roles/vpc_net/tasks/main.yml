@@ -11,7 +11,7 @@
 - name: Create Subnet
   amazon.aws.ec2_vpc_subnet:
    region: "{{ region }}"
-   vpc_id: "{{ vpc.vpc_id }}"
+   vpc_id: "{{ vpc.id }}"
    cidr: "{{ cidr_subnet1 }}"
    az: "{{ zone }}"
   register: subnet
@@ -19,13 +19,13 @@
 - name: create internet gateway
   amazon.aws.ec2_vpc_igw:
    region: "{{ region }}"
-   vpc_id: "{{ vpc.vpc_id }}"
+   vpc_id: "{{ vpc.id }}"
   register: igw
 
 - name: Set up public subnet route table
   amazon.aws.ec2_vpc_route_table:
    region: "{{region}}"
-   vpc_id: "{{ vpc.vpc_id }}"
+   vpc_id: "{{ vpc.id }}"
    subnets:
     - "{{ subnet.subnet_id  }}"
    routes:
