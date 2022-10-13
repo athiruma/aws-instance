@@ -1,4 +1,4 @@
 ---
-collection:
+collections:
   - name: amazon.aws
     version: 3.1.1
