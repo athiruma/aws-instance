@@ -1,0 +1,8 @@
+---
+- name: Chekc CIDR blocks
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/all.yml
+  roles:
+    - vpc_net_info

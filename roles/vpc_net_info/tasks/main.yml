@@ -1,0 +1,11 @@
+---
+- name: Extract VPC's from the aws {{region}}
+  amazon.aws.ec2_vpc_net_info:
+   region: "{{ region }}"
+  register: vpc_list
+
+- name: List vpc_ids
+  debug:
+   msg: "{{ item.vpc_id }} {{ item.cidr_block}} "
+  with_items: "{{ vpc_list.vpcs }}"
+
