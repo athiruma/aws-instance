@@ -1,0 +1,9 @@
+- name: Install ansible aws requirments
+  hosts: localhost
+  tasks:
+    - name: Install boto3 package
+      pip:
+        name:
+          - boto3 == 1.19.12
+          - botocore == 1.22.12
+         state: latest
