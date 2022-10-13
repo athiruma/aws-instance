@@ -6,4 +6,4 @@
         name:
           - boto3 == 1.19.12
           - botocore == 1.22.12
-         state: latest
+        state: latest
